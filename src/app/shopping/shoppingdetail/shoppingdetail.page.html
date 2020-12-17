@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/shopping"></ion-back-button>
+    </ion-buttons>
+    <ion-title>shoppingdetail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-thumbnail slot="start" [routerLink]="['/menudetail']">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>西班牙进口小丑派对热红酒 750ml</h3>
+      <ion-buttons slot="end">
+        <ion-button type="submit">
+          <ion-label>￥199 RMB</ion-label>
+          <ion-icon slot="end" name="cart-outline"></ion-icon>
+        </ion-button>
+        <ion-button type="submit">
+          <ion-icon slot="end" name="heart-sharp"></ion-icon>
+        </ion-button>
+        <ion-button type="submit">
+          <ion-icon slot="end" name="thumbs-up-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+    </ion-label>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <!-- <ion-title> -->
+  <ion-label slot="end">
+    <ion-buttons>
+    <ion-button (click)="checkout()"  >
+      结算
+    </ion-button>
+  </ion-buttons>
+</ion-label>
+  <!-- </ion-title> -->
+  </ion-toolbar>
+</ion-footer>

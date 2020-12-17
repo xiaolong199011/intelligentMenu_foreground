@@ -1,0 +1,45 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="bag-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="搜索我的收藏"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="menu">
+      <ion-label>下厨</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="course">
+      <ion-label>集市</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="result">
+      <ion-label>论坛</ion-label>
+    </ion-segment-button>
+    <!-- <ion-segment-button value="history">
+      <ion-label>浏览历史</ion-label>
+    </ion-segment-button> -->
+  </ion-segment>
+
+  <div [ngSwitch]="tab">
+    <div *ngSwitchCase="'menu'">
+      <ion-label><h1>铁锅炖大鹅</h1></ion-label>
+      <img src="/assets/pic/chicken.jpg" alt=""></div>
+    <ion-buttons slot="start">
+      <ion-button>
+        我的收藏
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button>
+        一道菜谱
+      </ion-button>
+    </ion-buttons>
+
+  </div>
+
+</ion-content>

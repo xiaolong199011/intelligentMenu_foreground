@@ -1,0 +1,116 @@
+<ion-header>
+  <!-- <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" size="small">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <ion-button slot="" size="small">
+        <ion-searchbar placeholder="搜索我的菜谱"></ion-searchbar>
+      </ion-button>
+      <ion-button fill="clear" size="small">
+        <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" size="small">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar> -->
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-add-outline" color="dark"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="settings-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="搜索低糖菜谱、食材"></ion-searchbar>
+    <ion-buttons slot="primary" slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="full">
+    <ion-label slot="start">
+      <h1>莲君123</h1>
+    </ion-label>
+    <ion-avatar slot="end" class="mytab_self_avator">
+      <img src="/assets/pic/duolaameng.jpg" alt="">
+    </ion-avatar>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-button expand="block" fill="outline" shape="round" size="small" slot="start" color="dark"
+      class="vip_background">
+      开通会员
+    </ion-button>
+  </ion-item>
+  <ion-item lines="none">
+    <p slot="start">女·2020-03-11加入</p>
+  </ion-item>
+  <ion-item lines="full">
+    <p slot="start">添加个人简历，让厨友更了解你</p>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label slot="start">
+      <h3>厨房用具</h3>
+    </ion-label>
+    <ion-label slot="end">
+      <ion-button expand="block" fill="clear" shape="round" size="small" color="warning">
+        添加
+      </ion-button>
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-tabs >
+
+      <ion-tab-bar>
+        <ion-tab-button >
+          <ion-icon name="time-outline"></ion-icon>
+          <ion-label>浏览历史</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button>
+          <ion-icon name="medal-outline"></ion-icon>
+          <ion-label>会员</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button>
+          <ion-icon name="desktop-outline"></ion-icon>
+          <ion-label>课程·书架</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button>
+          <ion-icon name="newspaper-outline"></ion-icon>
+          <ion-label>订单</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button>
+          <ion-icon name="wallet-outline"></ion-icon>
+          <ion-label>钱包</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    
+    </ion-tabs>
+  </ion-item>
+<!-- <ion-item>
+  <ion-content>
+    <ion-segment [(ngModel)]="tab">
+      <ion-segment-button value="menu">
+        <ion-label>菜谱</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="result">
+        <ion-label>详情</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    
+    <div [ngSwitch]="tab">
+      <div *ngSwitchCase="'menu'"><ion-label>菜谱介绍</ion-label></div>
+      <div *ngSwitchCase="'result'"><ion-label>详情介绍</ion-label></div>
+    </div>
+    </ion-content>
+</ion-item> -->
+</ion-content>

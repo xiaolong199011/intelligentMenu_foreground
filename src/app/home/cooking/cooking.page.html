@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="搜索低糖菜谱、食材"></ion-searchbar>
+    <ion-buttons slot="primary" slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item lines="none">
+    <ion-label slot="start">
+      <h2>为你推荐</h2>
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button>
+        菜谱分类
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ion-item>
+    <ion-thumbnail slot="start" [routerLink]="['/menudetail']">
+      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+    </ion-thumbnail>
+    <ion-label>
+      <h3>低糖好吃的东北菜</h3>
+      <ion-buttons slot="start">
+        <ion-button type="submit">
+          <ion-icon slot="end" name="heart-sharp"></ion-icon>
+        </ion-button>
+        <ion-button type="submit">
+          <ion-icon slot="end" name="thumbs-up-sharp"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-label>
+  </ion-item>
+</ion-content>
