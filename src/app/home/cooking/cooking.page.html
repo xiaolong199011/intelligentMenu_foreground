@@ -1,13 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="primary" (click)="getMenusByKeyWords()">
       <ion-button>
-        <ion-icon slot="icon-only" name="notifications-outline" color="dark"></ion-icon>
+        <ion-icon slot="icon-only" name="arrow-forward-circle-outline" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-searchbar placeholder="搜索低糖菜谱、食材"></ion-searchbar>
-    <ion-buttons slot="primary" slot="start">
+    <ion-buttons slot="primary" (click)="loginOff()">
       <ion-button>
+        <ion-icon slot="icon-only" name="arrow-redo-circle-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar placeholder="搜索食谱" [(ngModel)]="menuname"></ion-searchbar>
+    <ion-buttons slot="primary" slot="start">
+      <ion-button [routerLink]="['/user/menu']">
         <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -26,18 +31,19 @@
       </ion-button>
     </ion-buttons>
   </ion-item>
-  <ion-item>
-    <ion-thumbnail slot="start" [routerLink]="['/menudetail']">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+  <ion-item *ngFor="let item of menuListInfo">
+    <ion-thumbnail slot="start" [routerLink]="['/user/menudetail']" [queryParams]="{id:item.id}">
+      <img src="{{showPicUrl}}{{item.fileid}}">
     </ion-thumbnail>
     <ion-label>
-      <h3>低糖好吃的东北菜</h3>
+      <h3>{{item.menuname}}</h3>
       <ion-buttons slot="start">
-        <ion-button type="submit">
-          <ion-icon slot="end" name="heart-sharp"></ion-icon>
+        <ion-button type="submit" (click)="clickFavourite(item.id)">
+          <ion-icon slot="end" name="heart-sharp" [class.iconColor] = "changeColor" id = {{item.id}}></ion-icon>
         </ion-button>
-        <ion-button type="submit">
-          <ion-icon slot="end" name="thumbs-up-sharp"></ion-icon>
+        <ion-button type="submit" (click)="clickZan(item.id)">
+          <ion-icon name="thumbs-up-sharp" ></ion-icon>
+          <ion-label slot="end" >+{{item.zan}}</ion-label>
         </ion-button>
       </ion-buttons>
     </ion-label>

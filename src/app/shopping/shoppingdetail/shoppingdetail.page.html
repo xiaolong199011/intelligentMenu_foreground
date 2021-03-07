@@ -1,33 +1,48 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/shopping"></ion-back-button>
+      <ion-back-button defaultHref="/user/tabs/shopping"></ion-back-button>
     </ion-buttons>
-    <ion-title>shoppingdetail</ion-title>
+    <ion-title>食材介绍</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item lines="none">
+    <ion-slides [options]='slideOpts'>
+      <ion-slide>
+        <img src="{{picUrl}}{{shopMenuInfo.fileid}}" alt="">
+      </ion-slide>
+    </ion-slides>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-buttons slot="end">
+      <ion-button type="submit" (click)="clickFavourite(shopMenuInfo.id)">
+        <ion-icon slot="end" name="heart-sharp" id = shopping{{shopMenuInfo.id}}>
+        </ion-icon>
+      </ion-button>
+      <ion-button type="submit" (click)="clickZan(shopMenuInfo.id)">
+        <ion-icon name="thumbs-up-sharp">
+        </ion-icon>
+        <ion-label slot="end">+{{shopMenuInfo.zan}}</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
   <ion-item>
-    <ion-thumbnail slot="start" [routerLink]="['/menudetail']">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-    </ion-thumbnail>
-    <ion-label>
-      <h3>西班牙进口小丑派对热红酒 750ml</h3>
-      <ion-buttons slot="end">
-        <ion-button type="submit">
-          <ion-label>￥199 RMB</ion-label>
-          <ion-icon slot="end" name="cart-outline"></ion-icon>
-        </ion-button>
-        <ion-button type="submit">
-          <ion-icon slot="end" name="heart-sharp"></ion-icon>
-        </ion-button>
-        <ion-button type="submit">
-          <ion-icon slot="end" name="thumbs-up-sharp"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-
-    </ion-label>
+    <ion-label>食材名称:{{shopMenuInfo.materialname}}</ion-label>
+    <!-- <ion-textarea placeholder="any notes..."></ion-textarea> -->
+  </ion-item>
+  <ion-item>
+    <ion-label>食材含糖量:{{shopMenuInfo.sugerquantity}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>食材描述:{{shopMenuInfo.materialdescription}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>食材价格:{{shopMenuInfo.materialprice}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>食材库存:{{shopMenuInfo.materialreserve}}</ion-label>
   </ion-item>
 </ion-content>
 

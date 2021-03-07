@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="start">
       <ion-button>
-        <ion-icon slot="icon-only" name="cart-outline" color="dark"></ion-icon>
+        <ion-icon slot="start" name="cart-outline" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-searchbar placeholder="搜索低糖菜谱、食材"></ion-searchbar>
-    <ion-buttons slot="primary" slot="start">
-      <ion-button>
-        <ion-icon slot="icon-only" name="location-outline" color="dark"></ion-icon>
+    <ion-title slot="start">市集</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="loginOff()">
+        <ion-icon slot="end" name="arrow-redo-circle-outline" color="dark"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -20,20 +20,20 @@
 </ion-item>
 
 <ion-item lines="none" class="ion-item"> 
-  <ion-label class="menuitem" [routerLink]="['/shoppingdetail']">
-    <ion-label color="warning">测评团每日秒杀</ion-label>
-    <img src="/assets/pic/chicken.jpg" [routerLink]="['/shoppingdetail']">
+  <ion-label class="menuitem" [routerLink]="['/user/shoppinglist']" [queryParams]="{type:'食材'}">
+    <ion-label color="warning">食材精选</ion-label>
+    <img src="/assets/pic/shucai.jpg" [routerLink]="['/user/shoppinglist']">
   </ion-label>
 </ion-item>
 
 <ion-item lines="none" class="ion-item"> 
-  <ion-label class="menuitem">
-    <ion-label color="warning">每周特价商品</ion-label>
-    <img src="/assets/pic/chicken.jpg">
+  <ion-label class="menuitem" [routerLink]="['/user/shoppinglist']" [queryParams]="{type:'厨具'}">
+    <ion-label color="warning">厨具精选</ion-label>
+    <img src="/assets/pic/chuju.jpg" [routerLink]="['/user/shoppinglist']">
   </ion-label>
 </ion-item>
 
-<ion-item lines="none" class="ion-item"> 
+<!-- <ion-item lines="none" class="ion-item"> 
   <ion-label class="menuitem">
     <ion-label color="warning">好货推荐</ion-label>
     <img src="/assets/pic/chicken.jpg">
@@ -45,6 +45,6 @@
     <ion-label color="warning">每周热销榜单</ion-label>
     <img src="/assets/pic/chicken.jpg">
   </ion-label>
-</ion-item>
+</ion-item> -->
 
 </ion-content>

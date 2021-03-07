@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>addmenu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-item>
+  <form action="http://localhost:8002/file/upload" method="post" enctype="multipart/form-data" id="picupload">
+    <input type="hidden" name="id" id="id">
+    <input type="file" name="file" id="file"><br>
+    <input type="button" value="上传图片" (click)="upload();">
+  </form>
+</ion-item>
+<ion-item>
+  <p><ion-label slot="start">材料:</ion-label></p>
+  <ion-textarea placeholder="请输入材料信息">  </ion-textarea>
+</ion-item>
+<ion-item>
+  <p><ion-label slot="start">步骤:</ion-label></p>
+  <ion-textarea placeholder="请输入步骤信息">  </ion-textarea>
+</ion-item>
+<ion-item>
+  <ion-label>含糖量:</ion-label>
+  <ion-input type="text" placeholder="请输入含糖量"></ion-input>
+</ion-item>
+<ion-item lines="none">
+  <ion-buttons slot="end">
+  
+  <ion-button expand="block" shape="round" color="medium" type="submit" (click)="saveUser()">
+    提交
+  </ion-button>
+  <ion-button expand="block" shape="round" color="medium" type="reset">
+    重置
+  </ion-button>
+
+</ion-buttons>
+</ion-item>
+</ion-content>

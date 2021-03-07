@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>市集管理</ion-title>
+    <ion-buttons slot="primary" slot="end" >
+      <ion-button size="small" shape="round" fill="outline" (click)="addShopMenu()">添加</ion-button>
+      <ion-button size="small" shape="round" fill="outline" (click)="delShopMenuById(itemvalue)">删除</ion-button>
+      <ion-button size="small" shape="round" fill="outline" [routerLink]="['/manager/updatemanager/updateshoppingmanager']" [queryParams]="{id:itemvalue}" routerLinkActive="router-link-active" >更新</ion-button>
+      <ion-button size="small" shape="round" fill="outline" (click)="refreshPage()">刷新</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1">
+        
+      </ion-col>
+      <ion-col size="2">
+        编号
+      </ion-col>
+      <ion-col size="3">
+        食材名称
+      </ion-col>
+      <ion-col size="2">
+        价格
+      </ion-col>
+      <ion-col size="2">
+        库存
+      </ion-col>
+      <ion-col size="2">
+        含糖量
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngFor="let item of shoppingList">
+    <ion-row>
+      <ion-col size="1">
+        <input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue"/>
+      </ion-col>
+      <ion-col size="2">
+        {{item.id}}
+      </ion-col>
+      <ion-col size="3">
+        {{item.materialname}}
+      </ion-col>
+      <ion-col size="2">
+        {{item.materialprice}}
+      </ion-col>
+      <ion-col size="2">
+        {{item.materialreserve}}
+      </ion-col>
+      <ion-col size="2">
+        {{item.sugerquantity}}
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+</ion-content>

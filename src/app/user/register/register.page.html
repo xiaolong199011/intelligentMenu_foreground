@@ -1,28 +1,57 @@
 <ion-header>
   <ion-toolbar class="toolbar_title">
-    <ion-title size="large">低糖智能菜谱</ion-title>
-    <ion-title size="small">注册</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/user/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="middle" >低糖智能菜谱</ion-title>
+    <ion-title size="small" slot="end">用户注册</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
   <ion-item>
+    <form id="picupload">
+      <input type="file" name="file" id="file" enctype="multipart/form-data"><br>
+      <input type="button" value="上传图片" (click)="uploadFile()">
+    </form>
+  </ion-item>
+  <ion-item>
     <ion-label>用户名:</ion-label>
-    <ion-input type="text" placeholder="请输入姓名"></ion-input>
+    <ion-input type="text" placeholder="请输入姓名" [(ngModel)]="userinfo.username"></ion-input>
 </ion-item>
 <ion-item>
-    <ion-label>密码:</ion-label>
-    <ion-input type="password" placeholder="请输入密码"></ion-input>
+    <ion-label>密　码:</ion-label>
+    <ion-input type="password" placeholder="请输入密码" [(ngModel)]="userinfo.password"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>年　龄:</ion-label>
+  <ion-input type="text" placeholder="请输入年龄" [(ngModel)]="userinfo.age"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>性　别:</ion-label>
+     <ion-select [(ngModel)]="userinfo.sex">
+      <ion-select-option *ngFor="let item of userinfo.sexList" [value]="item">{{item}}</ion-select-option>
+    </ion-select>
+</ion-item>
+<ion-item>
+  <ion-label>手机号码:</ion-label>
+  <ion-input type="text" placeholder="请输入手机号码" [(ngModel)]="userinfo.telephonenum"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-textarea [(ngModel)]="userinfo.detail" placeholder="请输入备注信息">  </ion-textarea>
 </ion-item>
 <ion-item lines="none">
   <ion-buttons slot="end">
   
-  <ion-button expand="block" shape="round" color="medium" type="submit">
+  <ion-button expand="block" shape="round" color="medium" type="submit" (click)="saveUser()">
     提交
   </ion-button>
   <ion-button expand="block" shape="round" color="medium" type="reset">
     重置
   </ion-button>
+
 </ion-buttons>
 </ion-item>
+<ion-label>{{userinfo|json}}</ion-label>
 </ion-content>

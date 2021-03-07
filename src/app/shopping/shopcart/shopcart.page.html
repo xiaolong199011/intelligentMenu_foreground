@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/user/shoppinglist?type={{type}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>购物车</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of shopCartList">
+    <ion-thumbnail slot="start" [routerLink]="['/user/shoppingdetail']" [queryParams]="{id:item.shopMenu.id}">
+      <img src="{{picUrl}}{{item.shopMenu.fileid}}">
+    </ion-thumbnail>
+    <ion-label>
+      <h2 [routerLink]="['/user/shoppingdetail']" [queryParams]="{id:item.shopMenu.id}">{{item.shopMenu.materialname}}</h2>
+      <ion-buttons slot="end" class="tools_button">
+        <h2>{{item.shopMenu.materialprice}}￥</h2>
+        <h2>{{item.amount}}件</h2>
+        <ion-button type="submit">
+          <ion-icon slot="end" name="cart-outline"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+    </ion-label>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+  <ion-label slot="start">合计{{totalExpense}}元</ion-label>
+  <ion-label slot="end">
+    <ion-buttons>
+    <ion-button (click)="checkout()"  >
+      结算
+    </ion-button>
+  </ion-buttons>
+</ion-label>
+  <!-- </ion-title> -->
+  </ion-toolbar>
+</ion-footer>

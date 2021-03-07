@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/user/tabs/bbs"></ion-back-button>
+    </ion-buttons>
+    <ion-title>bbstopicmenu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <form id="picupload">
+      <input type="file" name="file" id="file" enctype="multipart/form-data"><br>
+      <input type="button" value="上传图片" (click)="uploadFile()">
+    </form>
+  </ion-item>
+  <ion-item>
+    <ion-textarea placeholder="请输入讨论话题" [(ngModel)]="bbsTopic.title">  </ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-textarea placeholder="请输入话题描述"[(ngModel)]="bbsTopic.description">  </ion-textarea>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-buttons slot="end">
+    <ion-button expand="block" shape="round" color="medium" type="submit" (click)="submitBBSTopic()">
+      提交
+    </ion-button>
+    <ion-button expand="block" shape="round" color="medium" type="reset">
+      重置
+    </ion-button>
+  </ion-buttons>
+  </ion-item>
+  <ion-label>{{bbsTopic|json}}</ion-label>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/user/menudetail?id={{menuId}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title>菜谱评价</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>评价:</ion-label>
+    <ion-input type="text" placeholder="请输入菜谱评价" [(ngModel)]="menuComment.comment"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+  <ion-buttons slot="end">
+    <ion-button expand="block" shape="round" color="medium" type="submit" (click)="submitMenuComment()">
+      提交
+    </ion-button>
+  </ion-buttons>
+  </ion-item>
+</ion-content>

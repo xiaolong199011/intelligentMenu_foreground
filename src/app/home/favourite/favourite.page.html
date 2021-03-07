@@ -1,0 +1,76 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="end" (click)="loginOff()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="arrow-redo-circle-outline" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title slot="start">我的收藏</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="menu">
+      <ion-label>下厨</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="shopping">
+      <ion-label>集市</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="bbscomment">
+      <ion-label>论坛</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="tab">
+    <div *ngSwitchCase="'menu'">
+      <ion-item *ngFor="let item of menuList">
+        <ion-thumbnail slot="start" [routerLink]="['/user/menudetail']" [queryParams]="{id:item.id}">
+          <img src="{{showPicUrl}}{{item.fileid}}">
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{item.menuname}}</h3>
+          <ion-buttons slot="start">
+            <ion-button type="submit" (click)="cancelMenuFavourite(item.id)">
+              <ion-icon slot="end" name="heart-sharp" id = menu{{item.id}}></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <div *ngSwitchCase="'shopping'">
+      <ion-item *ngFor="let item of shopMenuList">
+        <ion-thumbnail slot="start" [routerLink]="['/user/shoppingdetail']" [queryParams]="{id:item.id}">
+          <img src="{{showPicUrl}}{{item.fileid}}">
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{item.materialname}}</h3>
+          <ion-buttons slot="start">
+            <ion-button type="submit" (click)="cancelShopMenuFavourite(item.id)">
+              <ion-icon slot="end" name="heart-sharp" id = shopping{{item.id}}></ion-icon>
+            </ion-button>
+
+          </ion-buttons>
+        </ion-label>
+      </ion-item>
+    </div>
+
+    <div *ngSwitchCase="'bbscomment'">
+      <ion-item lines="full" *ngFor="let item of bbsCommentList">
+        <p>
+        <ion-note slot="start">{{item.comment}}</ion-note>
+        <ion-item slot="end" lines="none">
+        <ion-buttons slot="end">
+          <ion-label>{{item.timestamp}}</ion-label> 
+            <ion-button type="submit" slot="end" (click)="cancelBBSCommentFavourite(item.id)">
+              <ion-icon slot="end" name="heart-sharp" id = comment{{item.id}}>
+              </ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+          </p>
+        </ion-item>
+    </div>
+  </div>
+</ion-content>

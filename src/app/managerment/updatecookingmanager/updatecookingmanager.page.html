@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/manager/tabsmanager/cookingmanager"></ion-back-button>
+    </ion-buttons>
+    <ion-title>更新食谱管理</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>菜谱名称:</ion-label>
+    <ion-input type="text" placeholder="请菜谱名称" [(ngModel)]="menuInfo.menuname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <p><ion-label slot="start">材料:</ion-label></p>
+    <ion-textarea placeholder="请输入材料信息" [(ngModel)]="menuInfo.material">  </ion-textarea>
+  </ion-item>
+  <ion-item>
+    <p><ion-label slot="start">步骤:</ion-label></p>
+    <ion-textarea placeholder="请输入步骤信息" [(ngModel)]="menuInfo.cookingdesc">  </ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>含糖量:</ion-label>
+    <ion-input type="text" placeholder="请输入含糖量" [(ngModel)]="menuInfo.sugerquantity"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-buttons slot="end">
+    <ion-button expand="block" shape="round" color="medium" type="submit" (click)="updateMenu()">
+      提交
+    </ion-button>  
+  </ion-buttons>
+  </ion-item>
+</ion-content>

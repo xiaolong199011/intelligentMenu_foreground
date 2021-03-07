@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/cooking"></ion-back-button>
+      <ion-back-button defaultHref="/user/tabs/cooking"></ion-back-button>
     </ion-buttons>
     <ion-title>菜名</ion-title>
   </ion-toolbar>
@@ -11,46 +11,55 @@
   <ion-item lines="none">
     <ion-slides [options]='slideOpts'>
       <ion-slide>
-        <img src="/assets/pic/chicken.jpg" alt="">
+        <img src="{{picUrl}}{{menuInfo.fileid}}" alt="">
       </ion-slide>
-      <ion-slide>
+      <!-- <ion-slide>
         <img src="/assets/pic/duolaameng.jpg" alt="">
       </ion-slide>
       <ion-slide>
         <img src="/assets/pic/shopping_poster.jpg" alt="">
-      </ion-slide>
+      </ion-slide> -->
     </ion-slides>
   </ion-item>
   <ion-item lines="none">
     <ion-buttons slot="end">
-      <ion-button type="submit">
-        <ion-icon slot="end" name="heart-sharp">
-        </ion-icon>
+      <ion-button type="submit" (click)="clickFavourite(menuInfo.id)">
+        <ion-icon slot="end" name="heart-sharp" id=menu{{menuInfo.id}}></ion-icon>
       </ion-button>
-      <ion-button type="submit">
-        <ion-icon slot="end" name="thumbs-up-sharp">
+      <ion-button type="submit" (click)="clickZan()">
+        <ion-icon name="thumbs-up-sharp">
         </ion-icon>
-        <ion-label slot="end">1</ion-label>
+        <ion-label slot="end">+{{menuInfo.zan}}</ion-label>
       </ion-button>
     </ion-buttons>
   </ion-item>
   <ion-item>
-    <ion-label>用料:</ion-label>
-    <ion-textarea placeholder="Enter any notes here..."></ion-textarea>
+    <ion-label>用料:{{menuInfo.material}}</ion-label>
+    <!-- <ion-textarea placeholder="any notes..."></ion-textarea> -->
   </ion-item>
   <ion-item>
-    <ion-label>步骤:</ion-label>
-    <ion-textarea placeholder="Enter any notes here..."></ion-textarea>
+    <ion-label>步骤:{{menuInfo.cookingdesc}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>含糖量:{{menuInfo.sugerquantity}}</ion-label>
   </ion-item>
   <ion-item>
     <ion-label>评论</ion-label>
+    <ion-buttons slot="end" id="addbutton">
+      <ion-button (click)="addMenuComment()">
+        <ion-icon slot="start" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
-  <ion-item>
-    <ion-list>
-      <p>好吃</p>
-      <p>好吃</p>
-      <p>好吃</p>
-      <p>好吃</p>
-    </ion-list>
+  <ion-item *ngFor="let item of menuCommentList">
+
+    <ion-note>{{item.comment}}</ion-note>
+
+    <ion-buttons slot="end" id="readonlybuttons{{item.id}}">
+      <ion-label slot="end">{{item.timestamp|date:'MM-dd'}}:{{item.user.username}}</ion-label>
+      <ion-button (click)="readOnly(item.id)" id="readonly{{item.id}}" style="visibility: hidden;">
+        <ion-icon slot="end" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-item>
 </ion-content>

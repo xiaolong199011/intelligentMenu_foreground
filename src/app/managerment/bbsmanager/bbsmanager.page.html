@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>论坛管理</ion-title>
+    <ion-buttons slot="primary" slot="end" >
+      <ion-button size="small" shape="round" fill="outline" (click)="delItem(itemvalue)">删除</ion-button>
+      <ion-button size="small" shape="round" fill="outline" (click)="updateItem(itemvalue);false">更新</ion-button>
+      <ion-button size="small" shape="round" fill="outline" (click)="refreshPage()">刷新</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="tab">
+    <ion-segment-button value="bbsTopic">
+      <ion-label>话题</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="bbsComment">
+      <ion-label>评论</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="tab">
+    <div *ngSwitchCase="'bbsTopic'">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            
+          </ion-col>
+          <ion-col size="2">
+            编号
+          </ion-col>
+          <ion-col size="5">
+            话题
+          </ion-col>
+          <ion-col size="4">
+            时间
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid *ngFor="let item of bbsTopicList">
+        <ion-row>
+          <ion-col size="1">
+            <input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue"/>
+          </ion-col>
+          <ion-col size="2">
+            {{item.id}}
+          </ion-col>
+          <ion-col size="5">
+            {{item.title}}
+          </ion-col>
+          <ion-col size="4">
+            {{item.timestamp|date:'MM-dd-hh:mm'}}
+          </ion-col>
+        </ion-row>    
+      </ion-grid>
+    </div>
+    <div *ngSwitchCase="'bbsComment'">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            
+          </ion-col>
+          <ion-col size="2">
+            编号
+          </ion-col>
+          <ion-col size="5">
+            评论
+          </ion-col>
+          <ion-col size="4">
+            时间
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid *ngFor="let item of bbsCommentList">
+        <ion-row>
+          <ion-col size="1">
+            <input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue"/>
+          </ion-col>
+          <ion-col size="2">
+            {{item.id}}
+          </ion-col>
+          <ion-col size="5">
+            {{item.comment}}
+          </ion-col>
+          <ion-col size="4">
+            {{item.timestamp|date:'MM-dd-hh:mm'}}
+          </ion-col>
+        </ion-row>    
+      </ion-grid>
+    </div>
+  </div>
+
+</ion-content>

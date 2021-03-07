@@ -3,33 +3,23 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('./home/tabs/tabs.module').then(m => m.TabsPageModule)
+    path: 'user',
+    loadChildren: () => import('./home/tabs/tabs.module').then(m => m.TabsPageModule),
+    runGuardsAndResolvers: 'always',
    },
   {
-    path: 'register',
-    loadChildren: () => import('./user/register/register.module').then( m => m.RegisterPageModule)
+    path: 'manager',
+    loadChildren: () => import('./managerment/tabsmanager/tabsmanager.module').then( m => m.TabsmanagerPageModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./user/login/login.module').then( m => m.LoginPageModule)
+    path: '**',
+    redirectTo: '/user/login',
+    pathMatch: 'full'
   },
-  {
-    path: 'menudetail',
-    loadChildren: () => import('./cooking/menudetail/menudetail.module').then( m => m.MenudetailPageModule)
-  },
-  {
-    path: 'bbsdetail',
-    loadChildren: () => import('./BBS/bbsdetail/bbsdetail.module').then( m => m.BbsdetailPageModule)
-  },
-  {
-    path: 'shoppingdetail',
-    loadChildren: () => import('./shopping/shoppingdetail/shoppingdetail.module').then( m => m.ShoppingdetailPageModule)
-  }
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules,onSameUrlNavigation: 'reload' })
   ],
   exports: [RouterModule]
 })

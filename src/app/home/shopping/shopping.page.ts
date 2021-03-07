@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ComService} from '../../common/ComService';
 @Component({
   selector: 'app-shopping',
   templateUrl: './shopping.page.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private comService: ComService,
+  ) { }
 
   ngOnInit() {
   }
-
+  loginOff(){
+    this.comService.userLoginOff();
+  }
 }

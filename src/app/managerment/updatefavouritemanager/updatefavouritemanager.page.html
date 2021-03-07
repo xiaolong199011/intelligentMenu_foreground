@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/manager/tabsmanager/favouritemanager"></ion-back-button>
+    </ion-buttons>
+    <ion-title>更新收藏</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>编码:</ion-label>
+    <ion-input placeholder="请输入商品库存" [(ngModel)]="favourite.id"  readonly></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>用户编码:</ion-label>
+    <ion-input type="number" placeholder="请输入商品库存" [(ngModel)]="favourite.userid"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>食谱编码:</ion-label>
+    <ion-input type="number" placeholder="请输入商品库存" [(ngModel)]="favourite.menuid"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>商品编码:</ion-label>
+    <ion-input type="number" placeholder="请输入商品库存" [(ngModel)]="favourite.shoppingid"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>论坛话题编码:</ion-label>
+    <ion-input type="number" placeholder="请输入商品库存" [(ngModel)]="favourite.topicid"></ion-input>
+  </ion-item>
+  <ion-item>comment
+    <ion-label>论坛评论编码:</ion-label>
+    <ion-input type="number" placeholder="请输入商品库存" [(ngModel)]="favourite.commentid"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-buttons slot="end">
+    <ion-button expand="block" shape="round" color="medium" type="button" (click)="updateFavourite()">
+      提交
+    </ion-button>
+  </ion-buttons>
+  </ion-item>
+</ion-content>

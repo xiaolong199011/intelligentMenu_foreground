@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="primary" slot="end" >
+      <ion-button size="small" shape="round" fill="outline" (click)="delMenuById(itemvalue)">删除</ion-button>
+      <ion-button size="small" shape="round" fill="outline" (click)="updateMenuComment(itemvalue)" >更新</ion-button>
+      <ion-button size="small" shape="round" fill="outline" (click)="refreshPage()">刷新</ion-button>
+    </ion-buttons>
+    <ion-title>评价管理</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1">
+        
+      </ion-col>
+      <ion-col size="1">
+        编号
+      </ion-col>
+      <ion-col size="2">
+        用户
+      </ion-col>
+      <ion-col size="4">
+        评价
+      </ion-col>
+      <ion-col size="4">
+        时间
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngFor="let item of menuCommentList">
+    <ion-row>
+      <ion-col size="1">
+        <input type="radio" name = "id" id = "id" [value]= "item.id" [(ngModel)]="itemvalue"/>
+      </ion-col>
+      <ion-col size="1">
+        {{item.id}}
+      </ion-col>
+      <ion-col size="2">
+        {{item.user.username}}
+      </ion-col>
+      <ion-col size="4">
+        <!-- {{item.timestamp| date:'yyyy-MM-dd'}} -->
+        {{item.comment}}
+      </ion-col>
+      <ion-col size="4">
+        {{item.timestamp}}
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+</ion-content>

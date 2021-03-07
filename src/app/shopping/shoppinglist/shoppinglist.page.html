@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/user/tabs/shopping"></ion-back-button>
+    </ion-buttons>
+    <ion-title>市集精选</ion-title>
+    <ion-buttons slot="primary" slot="start" slot="end">
+      <ion-button [routerLink]="['/user/shoppingmenu']">
+        <ion-icon slot="icon-only" name="add" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of shopMenuListInfo">
+    <ion-thumbnail slot="start" [routerLink]="['/user/shoppingdetail']" [queryParams]="{id:item.id}">
+      <img src="{{picUrl}}{{item.fileid}}">
+    </ion-thumbnail>
+    <ion-label>
+      <h2 [routerLink]="['/user/shoppingdetail']" [queryParams]="{id:item.id}">{{item.materialname}}</h2>
+      <ion-buttons slot="end" class="tools_button">
+        <h2>{{item.materialprice}}￥</h2>
+        <ion-button type="submit" (click)="addShopCart(item.id)">
+          <ion-icon slot="end" name="cart-outline"></ion-icon>
+        </ion-button>
+        <ion-button type="submit" (click)="clickFavourite(item.id)">
+          <ion-icon slot="end" name="heart-sharp" id = shopping{{item.id}}></ion-icon>
+        </ion-button>
+        <ion-button type="submit" (click)="clickZan(item.id)">
+          <ion-icon slot="end" name="thumbs-up-sharp" ></ion-icon>
+          <ion-label slot="end" >+{{item.zan}}</ion-label>
+        </ion-button>
+      </ion-buttons>
+
+    </ion-label>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <!-- <ion-title> -->
+  <ion-label slot="end">
+    <ion-buttons>
+    <ion-button (click)="checkout()"  >
+      结算
+    </ion-button>
+  </ion-buttons>
+</ion-label>
+  <!-- </ion-title> -->
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/user/tabs/cooking"></ion-back-button>
+    </ion-buttons>
+    <ion-title slot="start">添加食谱</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-item>
+  <form id="picupload">
+    <input type="file" name="file" id="file" enctype="multipart/form-data"><br>
+    <input type="button" value="上传图片" (click)="uploadFile()">
+  </form>
+</ion-item>
+<ion-item>
+  <ion-label>菜谱名称:</ion-label>
+  <ion-input type="text" placeholder="请菜谱名称" [(ngModel)]="menuInfo.menuname"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>食材选择:</ion-label>
+  <ion-select [(ngModel)]="materialList" multiple="true" placeholder="选择蔬菜">
+    <ion-select-option *ngFor="let item of allMaterialList" [value]="item">{{item.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ion-textarea placeholder="请输入材料信息" [(ngModel)]="menuInfo.material">  </ion-textarea>
+</ion-item>
+<ion-item>
+  <ion-textarea placeholder="请输入步骤信息" [(ngModel)]="menuInfo.cookingdesc">  </ion-textarea>
+</ion-item>
+<ion-item>
+</ion-item>
+
+<ion-item>
+  <ion-list *ngFor="let item of materialList">  
+    <ion-input type="text" [(ngModel)]="item.name"></ion-input>
+    <ion-input type="number" [(ngModel)]="item.amount"></ion-input>
+  </ion-list>
+</ion-item>
+
+<ion-item>
+  <ion-label>含糖量:</ion-label>
+  <ion-input type="text" placeholder="请输入含糖量" [(ngModel)]="menuInfo.sugerquantity"></ion-input>
+</ion-item>
+
+<ion-item lines="none">
+  <ion-buttons slot="end">
+  
+  <ion-button expand="block" shape="round" color="medium" type="submit" (click)="submitMenu()">
+    提交
+  </ion-button>
+  <ion-button expand="block" shape="round" color="medium" type="reset" (click)="reset()">
+    重置
+  </ion-button>
+
+</ion-buttons>
+</ion-item>
+<ion-label>{{materialList|json}}</ion-label>
+</ion-content>
